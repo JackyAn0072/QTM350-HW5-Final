@@ -1,0 +1,134 @@
+---
+title: "World Development Indicators (2022): Exploratory Analysis"
+author: "Jacky An"
+date: "2025-02-26"
+format:
+  revealjs:
+    theme: solarized
+    transition: fade
+    slide-number: true
+    toc: true
+---
+
+# **World Development Indicators (2022)**
+### **Exploratory Analysis**
+#### Jacky An | February 26, 2025
+
+---
+
+## **Introduction**
+- This presentation analyzes the **World Development Indicators (WDI) dataset (2022)**.
+- Focus on key indicators:
+  - **GDP per capita**
+  - **Inflation rate**
+  - **Exports as a share of GDP**
+- Objective: Explore relationships & trends in global economic data.
+
+---
+
+## **Dataset Overview**
+```{python}
+#| label: load-data
+#| echo: true
+#| results: show
+
+import pandas as pd
+
+df = pd.read_csv("wdi.csv")
+df.head()
+```
+
+
+## **GDP per Capita Distribution**
+```{python}
+#| label: fig-gdp-hist
+#| fig-cap: "GDP per capita distribution (2022)."
+#| fig-format: png
+#| echo: false
+
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+plt.figure(figsize=(8,5))
+sns.histplot(df["gdp_per_capita"], bins=30, kde=True, color='blue')
+plt.title("Distribution of GDP per Capita")
+plt.xlabel("GDP per Capita (USD)")
+plt.ylabel("Count")
+plt.tight_layout()
+
+plt.savefig("gdp_hist.png", dpi=300)
+plt.show()
+```
+
+
+
+## **Inflation vs GDP per Capita**
+```{python}
+#| label: fig-inflation-scatter
+#| fig-cap: "Relationship between GDP per Capita and Inflation Rate."
+#| fig-format: png
+#| echo: false
+
+plt.figure(figsize=(8,5))
+sns.scatterplot(data=df, x="gdp_per_capita", y="inflation_rate", color='red')
+plt.title("GDP per Capita vs. Inflation Rate")
+plt.xlabel("GDP per Capita (USD)")
+plt.ylabel("Inflation Rate (%)")
+plt.tight_layout()
+
+plt.savefig("gdp_vs_inflation.png", dpi=300)
+plt.show()
+```
+
+
+## **Key Statistics Table**
+```{python}
+#| label: tab-key-stats
+#| tbl-cap: "Table 1: Key Indicators Summary Statistics (2022)."
+#| fig-format: png
+#| echo: false
+
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+summary_df = pd.DataFrame({
+    "Indicator": ["GDP per Capita", "Inflation Rate", "Exports % of GDP"],
+    "Mean": [
+        df["gdp_per_capita"].mean(),
+        df["inflation_rate"].mean(),
+        df["exports_gdp_share"].mean()
+    ],
+    "Std Dev": [
+        df["gdp_per_capita"].std(),
+        df["inflation_rate"].std(),
+        df["exports_gdp_share"].std()
+    ]
+}).round(2)
+
+sns.set_theme(style="whitegrid")
+
+fig, ax = plt.subplots(figsize=(6, 2))
+ax.axis("tight")
+ax.axis("off")
+
+table = ax.table(cellText=summary_df.values, 
+                 colLabels=summary_df.columns,
+                 cellLoc='center', 
+                 loc='center')
+
+table.auto_set_font_size(False)
+table.set_fontsize(10)
+table.auto_set_column_width([0, 1, 2])
+
+plt.savefig("key_stats_table.png", dpi=300)
+plt.show()
+```
+
+
+## **Conclusion**
+Our analysis of World Development Indicators (2022) reveals key insights into global economic and social trends.
+GDP per capita shows significant variation across countries, with higher-income nations exhibiting stronger economic performance.
+Life expectancy tends to increase with GDP per capita, suggesting a positive relationship between economic prosperity and public health.
+Unemployment rates vary widely, influenced by economic conditions, policies, and regional factors.
+These findings highlight the importance of economic growth, education, and healthcare investment in shaping development outcomes.
+Future research could explore regional trends, policy impacts, and long-term economic shifts to better understand development patterns.
