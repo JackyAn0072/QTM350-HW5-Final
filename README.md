@@ -1,7 +1,7 @@
 # QTM 350: Assignment 05 - Literate Programming with Quarto
 
 ## 📌 Project Overview
-This project analyzes **World Development Indicators (2022)** using **Quarto** for literate programming. The analysis focuses on **economic and social indicators** such as **GDP per capita, life expectancy, and inflation rate**. The final outputs include a **report and presentation** rendered in multiple formats (**HTML, PDF, and Reveal.js**).
+This project analyzes **World Development Indicators (2022)** using **Quarto** for literate programming. The analysis focuses on **GDP per capita, life expectancy, and inflation rate**. The outputs include a **report and presentation**, rendered in multiple formats (**HTML, PDF, and Reveal.js**).
 
 ---
 
