@@ -5,12 +5,12 @@ This project analyzes **World Development Indicators (2022)** using **Quarto** f
 
 ---
 
-## 📂 Repository URL
-[📁 GitHub Repository](https://github.com/JackyAn0072/QTM350-HW5-Final)
+## Repository URL
+[GitHub Repository](https://github.com/JackyAn0072/QTM350-HW5-Final)
 
 ---
 
-## 📊 Report and Presentation Links
+## Report and Presentation Links
 
 ### **Report**
 - [HTML Report](https://JackyAn0072.github.io/QTM350-HW5-Final/report.html)
